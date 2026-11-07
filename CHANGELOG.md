@@ -18,6 +18,10 @@ Formatet följer [Keep a Changelog](https://keepachangelog.com/sv/1.1.0/) och pr
 - App-ikon i fyra lager (parallax) med ordet "index" över en stigande graf, samt Top Shelf-bilder.
   Genereras av `scripts/generate-icons.swift`.
 
+### Changed
+
+- Appen heter nu "Index" på Apple TV:ns hemskärm (tidigare "TVDash").
+
 ### Removed
 
 - Exempel-dashboarden med låtsasdata.

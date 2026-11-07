@@ -42,7 +42,7 @@
         "DEVELOPMENT_TEAM": "6G962RZ438",
         "ENABLE_PREVIEWS": "YES",
         "GENERATE_INFOPLIST_FILE": "YES",
-        "INFOPLIST_KEY_CFBundleDisplayName": "TVDash",
+        "INFOPLIST_KEY_CFBundleDisplayName": "Index",
         "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
         "INFOPLIST_KEY_UIUserInterfaceStyle": "Automatic",
         "LD_RUNPATH_SEARCH_PATHS": "@executable_path/Frameworks",
