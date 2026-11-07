@@ -7,6 +7,16 @@ Formatet följer [Keep a Changelog](https://keepachangelog.com/sv/1.1.0/) och pr
 
 ## [Unreleased]
 
+### Added
+
+- Startvyn visar OMXS30:s utveckling sedan årsskiftet: senaste värde, förändring i punkter och procent,
+  samt ett diagram med dagliga stängningskurser. Data uppdateras var 5:e minut.
+- Svensk lokalisering.
+
+### Removed
+
+- Exempel-dashboarden med låtsasdata.
+
 ## [0.1.0] - 2026-11-07
 
 ### Added

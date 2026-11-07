@@ -1,7 +1,96 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-
+    "Check your internet connection and try again." : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kontrollera internetanslutningen och försök igen."
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stängning"
+          }
+        }
+      }
+    },
+    "Couldn't load index data" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunde inte hämta indexdata"
+          }
+        }
+      }
+    },
+    "Date" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datum"
+          }
+        }
+      }
+    },
+    "Loading…" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Laddar…"
+          }
+        }
+      }
+    },
+    "Since start of year" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sedan årsskiftet"
+          }
+        }
+      }
+    },
+    "Start of year" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Årets början"
+          }
+        }
+      }
+    },
+    "Try Again" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Försök igen"
+          }
+        }
+      }
+    },
+    "Updated %@" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uppdaterad %@"
+          }
+        }
+      }
+    }
   },
   "version" : "1.0"
 }

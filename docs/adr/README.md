@@ -15,3 +15,4 @@ Syftet är att framtida du (eller någon annan) ska förstå *varför* något ä
 | Nr | Titel | Status |
 |---|---|---|
 | [0001](0001-swiftui-tvos-only.md) | SwiftUI, endast tvOS, Swift 6 | Accepterad |
+| [0002](0002-index-data-from-yahoo-finance.md) | Indexdata från Yahoo Finance | Accepterad |

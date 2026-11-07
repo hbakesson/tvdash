@@ -1,6 +1,9 @@
 # TVDash
 
-En dashboard-app för Apple TV, byggd med SwiftUI.
+En dashboard-app för Apple TV, byggd med SwiftUI. Startvyn visar OMXS30:s utveckling sedan årsskiftet.
+
+Indexdata hämtas från Yahoo Finance (inofficiellt API, ingen nyckel) – se
+[ADR 0002](docs/adr/0002-index-data-from-yahoo-finance.md).
 
 > **Status:** tidig grund (v0.1.0). Se [CHANGELOG.md](CHANGELOG.md).
 
