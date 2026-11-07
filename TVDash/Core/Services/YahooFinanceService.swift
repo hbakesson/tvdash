@@ -6,23 +6,41 @@ import Foundation
 struct YahooFinanceService: IndexHistoryProviding {
     var session: URLSession = .shared
 
-    func yearToDate(symbol: String) async throws -> IndexHistory {
+    func history(symbol: String, range: HistoryRange) async throws -> IndexHistory {
         guard
             let encoded = symbol.addingPercentEncoding(withAllowedCharacters: .alphanumerics),
-            let url = URL(string: "https://query1.finance.yahoo.com/v8/finance/chart/\(encoded)?range=ytd&interval=1d")
+            var components = URLComponents(string: "https://query1.finance.yahoo.com/v8/finance/chart/\(encoded)")
         else {
             throw IndexHistoryError.invalidSymbol
         }
+
+        var query = [URLQueryItem(name: "interval", value: "1d")]
+        switch range {
+        case .yearToDate:
+            query.append(URLQueryItem(name: "range", value: "ytd"))
+        case .since(let start):
+            query.append(URLQueryItem(name: "period1", value: String(Int(start.timeIntervalSince1970))))
+            query.append(URLQueryItem(name: "period2", value: String(Int(Date.now.timeIntervalSince1970))))
+        }
+        components.queryItems = query
+
+        guard let url = components.url else { throw IndexHistoryError.invalidSymbol }
 
         let (data, response) = try await session.data(from: url)
         if let http = response as? HTTPURLResponse, !(200..<300).contains(http.statusCode), http.statusCode != 404 {
             throw IndexHistoryError.badStatus(http.statusCode)
         }
-        return try Self.parse(data)
+        return try await Self.decode(data)
+    }
+
+    /// Decodes on a background thread – ten years of daily data is a few hundred kilobytes of JSON.
+    @concurrent
+    private nonisolated static func decode(_ data: Data) async throws -> IndexHistory {
+        try parse(data)
     }
 
     /// Converts a chart API response into an `IndexHistory`. Separate from networking so it can be unit tested.
-    static func parse(_ data: Data) throws -> IndexHistory {
+    nonisolated static func parse(_ data: Data) throws -> IndexHistory {
         let response = try JSONDecoder().decode(ChartResponse.self, from: data)
 
         guard let result = response.chart.result?.first else {
@@ -57,7 +75,7 @@ struct YahooFinanceService: IndexHistoryProviding {
 
 // MARK: - Response format
 
-private struct ChartResponse: Decodable {
+private nonisolated struct ChartResponse: Decodable {
     struct Chart: Decodable {
         let result: [Result]?
         let error: APIError?

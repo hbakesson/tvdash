@@ -1,7 +1,9 @@
 import Foundation
 
-/// Daily closing prices for a stock index, from the start of the year until now.
-struct IndexHistory: Equatable, Sendable {
+/// Daily closing prices for a stock index over some period, plus the latest value.
+///
+/// `nonisolated` so it can be built and processed off the main actor.
+nonisolated struct IndexHistory: Equatable, Sendable {
     struct Point: Identifiable, Equatable, Sendable {
         let date: Date
         let close: Double
@@ -15,7 +17,7 @@ struct IndexHistory: Equatable, Sendable {
     let name: String
     /// ISO currency code, e.g. "SEK".
     let currency: String
-    /// Last close of the previous year – the reference for year-to-date performance.
+    /// Close just before the first point – for year-to-date data, last close of the previous year.
     let baseline: Double
     /// Most recent index value.
     let latest: Double

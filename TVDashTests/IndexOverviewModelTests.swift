@@ -8,14 +8,14 @@ struct IndexOverviewModelTests {
     /// Returns queued results in order; the last one repeats.
     private final class StubProvider: IndexHistoryProviding {
         var results: [Result<IndexHistory, any Error>]
-        private(set) var requestedSymbols: [String] = []
+        private(set) var requests: [(symbol: String, range: HistoryRange)] = []
 
         init(_ results: [Result<IndexHistory, any Error>]) {
             self.results = results
         }
 
-        func yearToDate(symbol: String) async throws -> IndexHistory {
-            requestedSymbols.append(symbol)
+        func history(symbol: String, range: HistoryRange) async throws -> IndexHistory {
+            requests.append((symbol, range))
             let result = results.count > 1 ? results.removeFirst() : results[0]
             return try result.get()
         }
@@ -36,7 +36,8 @@ struct IndexOverviewModelTests {
         await model.refresh()
 
         #expect(model.state == .loaded(.preview))
-        #expect(provider.requestedSymbols == ["^OMX"])
+        #expect(provider.requests.map(\.symbol) == ["^OMX"])
+        #expect(provider.requests.map(\.range) == [.yearToDate])
     }
 
     @Test func failureWithoutDataShowsError() async {

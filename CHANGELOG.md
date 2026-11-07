@@ -12,6 +12,9 @@ Formatet följer [Keep a Changelog](https://keepachangelog.com/sv/1.1.0/) och pr
 - Startvyn visar OMXS30:s utveckling sedan årsskiftet: senaste värde, förändring i punkter och procent,
   samt ett diagram med dagliga stängningskurser. Data uppdateras var 5:e minut.
 - Svensk lokalisering.
+- En skärm per region (Globalt, Nordamerika, Europa, Norden, Asien och tillväxt) med 1, 3, 5 och 10 års
+  prisutveckling, årlig takt över 10 år och snitt per region för 11 index.
+- Flikrad för att bläddra mellan OMXS30 och regionerna; senast visade flik sparas.
 
 ### Removed
 

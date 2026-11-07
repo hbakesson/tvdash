@@ -34,7 +34,7 @@ final class IndexOverviewModel {
     /// Fetches fresh data. If a refresh fails after data has been shown, the old data stays on screen.
     func refresh() async {
         do {
-            state = .loaded(try await provider.yearToDate(symbol: symbol))
+            state = .loaded(try await provider.history(symbol: symbol, range: .yearToDate))
         } catch is CancellationError {
             return
         } catch {

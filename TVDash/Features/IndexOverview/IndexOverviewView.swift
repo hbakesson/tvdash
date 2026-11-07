@@ -13,7 +13,7 @@ struct IndexOverviewView: View {
             case .loaded(let history):
                 IndexPerformanceView(displayName: model.displayName, history: history)
             case .failed:
-                IndexErrorView { Task { await model.retry() } }
+                LoadFailedView { Task { await model.retry() } }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -127,28 +127,12 @@ private struct IndexPerformanceView: View {
     }
 }
 
-// MARK: - Error
-
-private struct IndexErrorView: View {
-    let retry: () -> Void
-
-    var body: some View {
-        ContentUnavailableView {
-            Label("Couldn't load index data", systemImage: "chart.line.downtrend.xyaxis")
-        } description: {
-            Text("Check your internet connection and try again.")
-        } actions: {
-            Button("Try Again", action: retry)
-        }
-    }
-}
-
 // MARK: - Previews
 
 private struct PreviewProvider: IndexHistoryProviding {
     var fails = false
 
-    func yearToDate(symbol: String) async throws -> IndexHistory {
+    func history(symbol: String, range: HistoryRange) async throws -> IndexHistory {
         if fails { throw IndexHistoryError.noData("Preview") }
         return .preview
     }

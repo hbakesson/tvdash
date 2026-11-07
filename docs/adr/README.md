@@ -16,3 +16,4 @@ Syftet är att framtida du (eller någon annan) ska förstå *varför* något ä
 |---|---|---|
 | [0001](0001-swiftui-tvos-only.md) | SwiftUI, endast tvOS, Swift 6 | Accepterad |
 | [0002](0002-index-data-from-yahoo-finance.md) | Indexdata från Yahoo Finance | Accepterad |
+| [0003](0003-long-term-index-returns.md) | Långsiktig avkastning per region | Accepterad |

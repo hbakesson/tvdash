@@ -1,6 +1,66 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "1 yr" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 år"
+          }
+        }
+      }
+    },
+    "10 yrs" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 år"
+          }
+        }
+      }
+    },
+    "3 yrs" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 år"
+          }
+        }
+      }
+    },
+    "5 yrs" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 år"
+          }
+        }
+      }
+    },
+    "Asia & Emerging Markets" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asien och tillväxt"
+          }
+        }
+      }
+    },
+    "Average" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Snitt"
+          }
+        }
+      }
+    },
     "Check your internet connection and try again." : {
       "localizations" : {
         "sv" : {
@@ -41,12 +101,82 @@
         }
       }
     },
+    "Europe" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Europa"
+          }
+        }
+      }
+    },
+    "Global" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Globalt"
+          }
+        }
+      }
+    },
+    "Index" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Index"
+          }
+        }
+      }
+    },
     "Loading…" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Laddar…"
+          }
+        }
+      }
+    },
+    "Nordics" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Norden"
+          }
+        }
+      }
+    },
+    "North America" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nordamerika"
+          }
+        }
+      }
+    },
+    "Per year, 10 yrs" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Per år, 10 år"
+          }
+        }
+      }
+    },
+    "Price return, excluding dividends" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prisutveckling, exklusive utdelningar"
           }
         }
       }
@@ -87,6 +217,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uppdaterad %@"
+          }
+        }
+      }
+    },
+    "^[%lld index](inflect: true)" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld index"
+          }
+        }
+      }
+    },
+    "via %@" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "via %@"
           }
         }
       }

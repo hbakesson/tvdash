@@ -4,10 +4,11 @@ import SwiftUI
 @main
 struct TVDashApp: App {
     @State private var indexOverview = IndexOverviewModel()
+    @State private var markets = MarketsModel()
 
     var body: some Scene {
         WindowGroup {
-            IndexOverviewView(model: indexOverview)
+            RootView(indexOverview: indexOverview, markets: markets)
         }
     }
 }

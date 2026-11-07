@@ -1,6 +1,12 @@
 # TVDash
 
-En dashboard-app för Apple TV, byggd med SwiftUI. Startvyn visar OMXS30:s utveckling sedan årsskiftet.
+En dashboard-app för Apple TV, byggd med SwiftUI.
+
+- **OMXS30:** utveckling sedan årsskiftet med diagram.
+- **Regioner** (en per skärm): Globalt, Nordamerika, Europa, Norden, Asien och tillväxt – 1, 3, 5 och 10 års
+  utveckling per index samt snitt.
+
+Bläddra mellan skärmarna med vänster/höger på Siri Remote.
 
 Indexdata hämtas från Yahoo Finance (inofficiellt API, ingen nyckel) – se
 [ADR 0002](docs/adr/0002-index-data-from-yahoo-finance.md).
