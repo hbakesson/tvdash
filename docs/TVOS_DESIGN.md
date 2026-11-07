@@ -46,6 +46,12 @@ Ikonen är en **layered image** (parallax) med 2–5 lager i `Assets.xcassets/Ap
 
 Bakgrundslagret ska vara opakt; övriga lager får ha transparens. Förhandsgranska parallax i Xcode.
 
+Ikonen och Top Shelf-bilderna genereras med kod. Ändra `scripts/generate-icons.swift` och kör:
+
+```sh
+swift scripts/generate-icons.swift "TVDash/Resources/Assets.xcassets/App Icon & Top Shelf Image.brandassets"
+```
+
 ## Tillgänglighet
 
 - `accessibilityLabel` på ikoner och bilder utan text; slå ihop kort med `.accessibilityElement(children: .combine)`.
