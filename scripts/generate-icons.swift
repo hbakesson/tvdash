@@ -94,6 +94,27 @@ func line(_ ctx: CGContext, _ rect: CGRect, width: CGFloat) {
     ctx.fillEllipse(in: CGRect(x: end.x - width * 1.1, y: end.y - width * 1.1, width: width * 2.2, height: width * 2.2))
 }
 
+// MARK: Wordmark
+
+/// Draws the white "index" wordmark centred over the chart, with a soft shadow so it reads over the green line.
+func wordmark(_ ctx: CGContext, _ w: CGFloat, _ h: CGFloat) {
+    let size = h * 0.34
+    let font = CTFontCreateWithName("AvenirNext-Heavy" as CFString, size, nil)
+    let attributes: [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key(kCTFontAttributeName as String): font,
+        NSAttributedString.Key(kCTForegroundColorAttributeName as String): color(0xFFFFFF),
+        NSAttributedString.Key(kCTKernAttributeName as String): -size * 0.03,
+    ]
+    let text = CTLineCreateWithAttributedString(NSAttributedString(string: "index", attributes: attributes))
+    let bounds = CTLineGetImageBounds(text, ctx)
+    ctx.setShadow(offset: CGSize(width: 0, height: -h * 0.012), blur: h * 0.06, color: color(0x050A14, 0.65))
+    // Slightly left of and below centre, so the chart's peak stays visible top-right.
+    let center = CGPoint(x: w * 0.45, y: h * 0.40)
+    ctx.textPosition = CGPoint(
+        x: center.x - bounds.width / 2 - bounds.minX, y: center.y - bounds.height / 2 - bounds.minY)
+    CTLineDraw(text, ctx)
+}
+
 // MARK: Layered app icons
 
 let stacks: [(folder: String, base: (Int, Int), scales: [Int])] = [
@@ -114,6 +135,8 @@ for stack in stacks {
              "\(stack.folder)/Middle.imagestacklayer/Content.imageset/middle\(suffix).png")
         save(render(w, h, opaque: false) { ctx, _, _ in line(ctx, rect, width: 9 * unit) },
              "\(stack.folder)/Front.imagestacklayer/Content.imageset/front\(suffix).png")
+        save(render(w, h, opaque: false) { ctx, w, h in wordmark(ctx, w, h) },
+             "\(stack.folder)/Text.imagestacklayer/Content.imageset/text\(suffix).png")
     }
 }
 

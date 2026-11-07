@@ -39,7 +39,7 @@ Ikonen är en **layered image** (parallax) med 2–5 lager i `Assets.xcassets/Ap
 
 | Bild | Storlek (1x / 2x) |
 |---|---|
-| App Icon (hemskärm) | 400×240 / 800×480, lager: Front, Middle, Back |
+| App Icon (hemskärm) | 400×240 / 800×480, lager: Text, Front, Middle, Back |
 | App Icon – App Store | 1280×768 |
 | Top Shelf Image | 1920×720 / 3840×1440 |
 | Top Shelf Image Wide | 2320×720 / 4640×1440 |
