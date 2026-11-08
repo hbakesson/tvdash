@@ -20,6 +20,8 @@ https://query1.finance.yahoo.com/v8/finance/chart/%5EOMX?range=ytd&interval=1d
 - Baslinje: `meta.chartPreviousClose` (föregående års sista stängning).
 - Senaste värde: `meta.regularMarketPrice`, tid: `meta.regularMarketTime`.
 - Data hämtas när vyn visas och sedan var 5:e minut. Misslyckas en uppdatering ligger gammal data kvar.
+- Diagrammets tidsperioder hämtas med `range=ytd`, `range=max` eller `period1`/`period2`. Upp till 1 år används
+  `interval=1d`, för 5 och 10 år `1wk` och för max `1mo`, så att diagrammet inte får tusentals punkter.
 - Allt ligger bakom protokollet `IndexHistoryProviding`, implementerat av `YahooFinanceService`.
 
 ## Alternativ som övervägdes

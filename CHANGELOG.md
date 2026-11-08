@@ -15,6 +15,9 @@ Formatet följer [Keep a Changelog](https://keepachangelog.com/sv/1.1.0/) och pr
 - En skärm per region (Globalt, Nordamerika, Europa, Norden, Asien och tillväxt) med 1, 3, 5 och 10 års
   prisutveckling, årlig takt över 10 år och snitt per region för 11 index.
 - Flikrad för att bläddra mellan OMXS30 och regionerna; senast visade flik sparas.
+- Välj tidsperiod för indexdiagrammet: 1 mån, 3 mån, 6 mån, i år, 1 år, 5 år, 10 år eller max. Senast valda
+  period sparas och gäller alla index.
+- Varje index på regionskärmarna går att välja och öppnar ett eget diagram med tidsperioder.
 - App-ikon i fyra lager (parallax) med ordet "index" över en stigande graf, samt Top Shelf-bilder.
   Genereras av `scripts/generate-icons.swift`.
 

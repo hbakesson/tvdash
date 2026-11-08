@@ -18,6 +18,7 @@ nonisolated struct IndexHistory: Equatable, Sendable {
     /// ISO currency code, e.g. "SEK".
     let currency: String
     /// Close just before the first point – for year-to-date data, last close of the previous year.
+    /// Change over the period is measured from this value.
     let baseline: Double
     /// Most recent index value.
     let latest: Double
@@ -26,10 +27,10 @@ nonisolated struct IndexHistory: Equatable, Sendable {
     /// Daily closes, oldest first.
     let points: [Point]
 
-    /// Year-to-date change in index points.
+    /// Change over the period in index points.
     var change: Double { latest - baseline }
 
-    /// Year-to-date change as a fraction (0.05 = +5 %).
+    /// Change over the period as a fraction (0.05 = +5 %).
     var changeFraction: Double {
         guard baseline != 0 else { return 0 }
         return change / baseline

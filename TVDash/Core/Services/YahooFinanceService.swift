@@ -6,7 +6,7 @@ import Foundation
 struct YahooFinanceService: IndexHistoryProviding {
     var session: URLSession = .shared
 
-    func history(symbol: String, range: HistoryRange) async throws -> IndexHistory {
+    func history(symbol: String, range: HistoryRange, interval: HistoryInterval) async throws -> IndexHistory {
         guard
             let encoded = symbol.addingPercentEncoding(withAllowedCharacters: .alphanumerics),
             var components = URLComponents(string: "https://query1.finance.yahoo.com/v8/finance/chart/\(encoded)")
@@ -14,10 +14,12 @@ struct YahooFinanceService: IndexHistoryProviding {
             throw IndexHistoryError.invalidSymbol
         }
 
-        var query = [URLQueryItem(name: "interval", value: "1d")]
+        var query = [URLQueryItem(name: "interval", value: Self.queryValue(for: interval))]
         switch range {
         case .yearToDate:
             query.append(URLQueryItem(name: "range", value: "ytd"))
+        case .max:
+            query.append(URLQueryItem(name: "range", value: "max"))
         case .since(let start):
             query.append(URLQueryItem(name: "period1", value: String(Int(start.timeIntervalSince1970))))
             query.append(URLQueryItem(name: "period2", value: String(Int(Date.now.timeIntervalSince1970))))
@@ -31,6 +33,14 @@ struct YahooFinanceService: IndexHistoryProviding {
             throw IndexHistoryError.badStatus(http.statusCode)
         }
         return try await Self.decode(data)
+    }
+
+    private static func queryValue(for interval: HistoryInterval) -> String {
+        switch interval {
+        case .daily: "1d"
+        case .weekly: "1wk"
+        case .monthly: "1mo"
+        }
     }
 
     /// Decodes on a background thread – ten years of daily data is a few hundred kilobytes of JSON.

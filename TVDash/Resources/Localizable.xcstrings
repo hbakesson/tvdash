@@ -21,6 +21,36 @@
         }
       }
     },
+    "10Y" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 år"
+          }
+        }
+      }
+    },
+    "1M" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 mån"
+          }
+        }
+      }
+    },
+    "1Y" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 år"
+          }
+        }
+      }
+    },
     "3 yrs" : {
       "localizations" : {
         "sv" : {
@@ -31,12 +61,62 @@
         }
       }
     },
+    "3M" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 mån"
+          }
+        }
+      }
+    },
     "5 yrs" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "5 år"
+          }
+        }
+      }
+    },
+    "5Y" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5 år"
+          }
+        }
+      }
+    },
+    "6M" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6 mån"
+          }
+        }
+      }
+    },
+    "All" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Max"
+          }
+        }
+      }
+    },
+    "All available history" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All tillgänglig historik"
           }
         }
       }
@@ -161,6 +241,66 @@
         }
       }
     },
+    "Past 10 years" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste 10 åren"
+          }
+        }
+      }
+    },
+    "Past 3 months" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste 3 månaderna"
+          }
+        }
+      }
+    },
+    "Past 5 years" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste 5 åren"
+          }
+        }
+      }
+    },
+    "Past 6 months" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste 6 månaderna"
+          }
+        }
+      }
+    },
+    "Past month" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste månaden"
+          }
+        }
+      }
+    },
+    "Past year" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste året"
+          }
+        }
+      }
+    },
     "Per year, 10 yrs" : {
       "localizations" : {
         "sv" : {
@@ -181,6 +321,16 @@
         }
       }
     },
+    "Since %@" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sedan %@"
+          }
+        }
+      }
+    },
     "Since start of year" : {
       "localizations" : {
         "sv" : {
@@ -191,12 +341,22 @@
         }
       }
     },
-    "Start of year" : {
+    "Start of period" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Årets början"
+            "value" : "Periodens början"
+          }
+        }
+      }
+    },
+    "Timespan" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidsperiod"
           }
         }
       }
@@ -217,6 +377,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uppdaterad %@"
+          }
+        }
+      }
+    },
+    "YTD" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I år"
           }
         }
       }

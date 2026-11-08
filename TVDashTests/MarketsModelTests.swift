@@ -10,7 +10,7 @@ struct MarketsModelTests {
         private(set) var requests: [(symbol: String, range: HistoryRange)] = []
         let end = date(2026, 11, 6)
 
-        func history(symbol: String, range: HistoryRange) async throws -> IndexHistory {
+        func history(symbol: String, range: HistoryRange, interval: HistoryInterval) async throws -> IndexHistory {
             requests.append((symbol, range))
             if failing.contains(symbol) { throw IndexHistoryError.noData(symbol) }
             // Every index doubled over ten years; growth differs per symbol for the 1-year column.

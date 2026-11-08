@@ -3,13 +3,13 @@ import Foundation
 @testable import TVDash
 
 /// A UTC Gregorian calendar so date arithmetic in tests is independent of the machine's settings.
-let utcCalendar: Calendar = {
+nonisolated let utcCalendar: Calendar = {
     var calendar = Calendar(identifier: .gregorian)
     calendar.timeZone = .gmt
     return calendar
 }()
 
-func date(_ year: Int, _ month: Int, _ day: Int) -> Date {
+nonisolated func date(_ year: Int, _ month: Int, _ day: Int) -> Date {
     utcCalendar.date(from: DateComponents(year: year, month: month, day: day)) ?? .distantPast
 }
 

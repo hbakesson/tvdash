@@ -1,44 +1,71 @@
 import Charts
 import SwiftUI
 
-/// Start screen: year-to-date development of an index, sized for viewing from the couch.
+/// Chart screen for one index: latest value, change and a chart over the selected timespan.
+///
+/// Used as the start screen (OMXS30) and when opening an index from a region screen. The selected
+/// timespan is shared by all indexes and remembered between launches.
 struct IndexOverviewView: View {
     let model: IndexOverviewModel
 
+    /// Can be overridden at launch with `-chartTimespan <case name>`.
+    @AppStorage("chartTimespan") private var timespan: ChartTimespan = .yearToDate
+
     var body: some View {
-        Group {
-            switch model.state {
-            case .loading:
-                ProgressView("Loading…")
-            case .loaded(let history):
-                IndexPerformanceView(displayName: model.displayName, history: history)
-            case .failed:
-                LoadFailedView { Task { await model.retry() } }
+        let state = model.state(for: timespan)
+
+        VStack(alignment: .leading, spacing: 40) {
+            IndexHeader(displayName: model.displayName, timespan: timespan, state: state)
+
+            Picker("Timespan", selection: $timespan) {
+                ForEach(ChartTimespan.allCases) { timespan in
+                    Text(timespan.title).tag(timespan)
+                }
             }
+            .pickerStyle(.segmented)
+            .labelsHidden()
+            .frame(maxWidth: 1200)
+
+            // The picker stays in place while a timespan loads, so focus is never lost.
+            Group {
+                switch state {
+                case .loading:
+                    ProgressView("Loading…")
+                case .loaded(let history):
+                    IndexChart(history: history, timespan: timespan)
+                case .failed:
+                    LoadFailedView { Task { await model.retry(timespan) } }
+                }
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .task { await model.refreshPeriodically() }
+        .padding(.horizontal, 80)
+        .padding(.vertical, 60)
+        .task(id: timespan) { await model.refreshPeriodically(timespan) }
     }
 }
 
-// MARK: - Loaded
+// MARK: - Header
 
-private struct IndexPerformanceView: View {
+private struct IndexHeader: View {
     let displayName: String
-    let history: IndexHistory
+    let timespan: ChartTimespan
+    let state: IndexOverviewModel.State
+
+    /// Shown redacted while loading, so the layout does not jump when data arrives.
+    private static let placeholder = IndexHistory(
+        symbol: "", name: "OMX Stockholm 30 Index", currency: "", baseline: 2900, latest: 3000,
+        updatedAt: .now, points: []
+    )
+
+    private var history: IndexHistory {
+        if case .loaded(let history) = state { return history }
+        return Self.placeholder
+    }
 
     private var trendColor: Color { history.isUp ? .green : .red }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 48) {
-            header
-            chart
-        }
-        .padding(.horizontal, 80)
-        .padding(.vertical, 60)
-    }
-
-    private var header: some View {
         HStack(alignment: .firstTextBaseline) {
             VStack(alignment: .leading, spacing: 8) {
                 Text(verbatim: displayName)
@@ -46,6 +73,7 @@ private struct IndexPerformanceView: View {
                 Text(verbatim: history.name)
                     .font(.headline)
                     .foregroundStyle(.secondary)
+                    .redacted(reason: isLoading ? .placeholder : [])
             }
 
             Spacer()
@@ -58,15 +86,28 @@ private struct IndexPerformanceView: View {
                     .font(.title3.bold())
                     .monospacedDigit()
                     .foregroundStyle(trendColor)
-                Text("Since start of year")
+                periodText
                     .font(.headline)
                     .foregroundStyle(.secondary)
                 Text("Updated \(history.updatedAt, format: .dateTime.day().month().hour().minute())")
                     .font(.caption)
                     .foregroundStyle(.tertiary)
             }
+            .redacted(reason: isLoading ? .placeholder : [])
+            .opacity(state == .failed ? 0 : 1)
         }
         .accessibilityElement(children: .combine)
+    }
+
+    private var isLoading: Bool { state == .loading }
+
+    @ViewBuilder
+    private var periodText: some View {
+        if timespan == .all, let first = history.points.first {
+            Text("Since \(first.date, format: .dateTime.year())")
+        } else {
+            Text(timespan.summary)
+        }
     }
 
     private var changeText: String {
@@ -76,6 +117,18 @@ private struct IndexPerformanceView: View {
         )
         return "\(points) (\(percent))"
     }
+
+}
+
+// MARK: - Chart
+
+private struct IndexChart: View {
+    let history: IndexHistory
+    let timespan: ChartTimespan
+
+    private var trendColor: Color { history.isUp ? .green : .red }
+
+    var body: some View { chart }
 
     private var yDomain: ClosedRange<Double> {
         let range = history.valueRange
@@ -107,15 +160,15 @@ private struct IndexPerformanceView: View {
                 .lineStyle(StrokeStyle(lineWidth: 4, lineJoin: .round))
             }
 
-            RuleMark(y: .value("Start of year", history.baseline))
+            RuleMark(y: .value("Start of period", history.baseline))
                 .foregroundStyle(Color.secondary)
                 .lineStyle(StrokeStyle(lineWidth: 2, dash: [10, 8]))
         }
         .chartYScale(domain: yDomain)
         .chartXAxis {
-            AxisMarks(values: .stride(by: .month)) {
+            AxisMarks(values: timespan.axisValues) {
                 AxisGridLine()
-                AxisValueLabel(format: .dateTime.month(.abbreviated))
+                AxisValueLabel(format: timespan.axisLabelFormat)
             }
         }
         .chartYAxis {
@@ -127,12 +180,32 @@ private struct IndexPerformanceView: View {
     }
 }
 
+extension ChartTimespan {
+    /// Where to put date labels: about 4–12 per chart.
+    fileprivate var axisValues: AxisMarkValues {
+        switch self {
+        case .oneMonth: .stride(by: .weekOfYear)
+        case .threeMonths, .sixMonths, .yearToDate, .oneYear: .stride(by: .month)
+        case .fiveYears, .tenYears: .stride(by: .year)
+        case .all: .automatic(desiredCount: 8)
+        }
+    }
+
+    fileprivate var axisLabelFormat: Date.FormatStyle {
+        switch self {
+        case .oneMonth: .dateTime.day().month(.abbreviated)
+        case .threeMonths, .sixMonths, .yearToDate, .oneYear: .dateTime.month(.abbreviated)
+        case .fiveYears, .tenYears, .all: .dateTime.year()
+        }
+    }
+}
+
 // MARK: - Previews
 
 private struct PreviewProvider: IndexHistoryProviding {
     var fails = false
 
-    func history(symbol: String, range: HistoryRange) async throws -> IndexHistory {
+    func history(symbol: String, range: HistoryRange, interval: HistoryInterval) async throws -> IndexHistory {
         if fails { throw IndexHistoryError.noData("Preview") }
         return .preview
     }

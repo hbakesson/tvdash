@@ -1,11 +1,13 @@
 import SwiftUI
 
 /// One region per screen: a table of indexes with 1, 3, 5 and 10-year returns.
+///
+/// Selecting a row pushes a `MarketIndex` onto the enclosing `NavigationStack`.
 struct MarketRegionView: View {
     let region: MarketRegion
     let model: MarketsModel
 
-    private let valueColumnWidth: CGFloat = 210
+    private let valueColumnWidth: CGFloat = 225
 
     var body: some View {
         if model.allFailed {
@@ -34,10 +36,10 @@ struct MarketRegionView: View {
     }
 
     private var table: some View {
-        Grid(alignment: .trailing, horizontalSpacing: 28, verticalSpacing: 28) {
-            GridRow {
+        VStack(spacing: 16) {
+            HStack(spacing: 20) {
                 Text("Index")
-                    .gridColumnAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 ForEach(ReturnPeriod.allCases, id: \.self) { period in
                     Text(period.title)
                         .frame(width: valueColumnWidth, alignment: .trailing)
@@ -45,34 +47,41 @@ struct MarketRegionView: View {
             }
             .font(.headline)
             .foregroundStyle(.secondary)
+            .padding(.horizontal, RowButtonStyle.horizontalPadding)
 
             Divider()
 
+            // Each row opens the index's chart, where the timespan can be chosen.
             ForEach(region.indexes) { index in
-                GridRow {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(verbatim: index.name)
-                            .font(.title3.bold())
-                        Text(subtitle(for: index))
-                            .font(.callout)
-                            .foregroundStyle(.secondary)
-                    }
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.75)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                NavigationLink(value: index) {
+                    HStack(spacing: 20) {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(verbatim: index.name)
+                                .font(.title3.bold())
+                            Text(subtitle(for: index))
+                                .font(.callout)
+                                .foregroundStyle(.secondary)
+                        }
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.75)
+                        .frame(maxWidth: .infinity, alignment: .leading)
 
-                    ReturnCells(state: model.state(for: index))
+                        ReturnCells(state: model.state(for: index), columnWidth: valueColumnWidth)
+                    }
                 }
+                .buttonStyle(RowButtonStyle())
                 .accessibilityElement(children: .combine)
             }
 
             if let average = model.average(for: region) {
                 Divider()
-                GridRow {
+                HStack(spacing: 20) {
                     Text("Average")
                         .font(.title3.bold())
-                    ReturnCells(state: .loaded(average))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    ReturnCells(state: .loaded(average), columnWidth: valueColumnWidth)
                 }
+                .padding(.horizontal, RowButtonStyle.horizontalPadding)
                 .accessibilityElement(children: .combine)
             }
         }
@@ -96,15 +105,47 @@ struct MarketRegionView: View {
     }
 }
 
+/// A table row that lifts and highlights when focused.
+private struct RowButtonStyle: ButtonStyle {
+    static let horizontalPadding: CGFloat = 24
+
+    func makeBody(configuration: Configuration) -> some View {
+        Row(configuration: configuration)
+    }
+
+    private struct Row: View {
+        let configuration: Configuration
+        @Environment(\.isFocused) private var isFocused
+
+        var body: some View {
+            configuration.label
+                .padding(.horizontal, RowButtonStyle.horizontalPadding)
+                .padding(.vertical, 16)
+                .background(
+                    RoundedRectangle(cornerRadius: 20, style: .continuous)
+                        .fill(Color.primary.opacity(isFocused ? 0.14 : 0))
+                )
+                .scaleEffect(configuration.isPressed ? 0.98 : isFocused ? 1.02 : 1)
+                .shadow(color: .black.opacity(isFocused ? 0.3 : 0), radius: 16, y: 8)
+                .animation(.easeOut(duration: 0.15), value: isFocused)
+                .animation(.easeOut(duration: 0.1), value: configuration.isPressed)
+        }
+    }
+}
+
 /// The five value cells of one table row.
 private struct ReturnCells: View {
     let state: MarketsModel.RowState
+    let columnWidth: CGFloat
 
     var body: some View {
         ForEach(ReturnPeriod.allCases, id: \.self) { period in
             cell(for: period)
                 .font(.title3.weight(.semibold))
                 .monospacedDigit()
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(width: columnWidth, alignment: .trailing)
         }
     }
 
@@ -129,7 +170,7 @@ private struct ReturnCells: View {
 // MARK: - Previews
 
 private struct PreviewProvider: IndexHistoryProviding {
-    func history(symbol: String, range: HistoryRange) async throws -> IndexHistory {
+    func history(symbol: String, range: HistoryRange, interval: HistoryInterval) async throws -> IndexHistory {
         if symbol == "^RUT" { throw IndexHistoryError.noData("Preview") }
         let growth = Double(symbol.unicodeScalars.reduce(0) { $0 + Int($1.value) } % 40) / 100 + 0.02
         let end = Date.now
@@ -146,6 +187,8 @@ private struct PreviewProvider: IndexHistoryProviding {
 
 #Preview("North America") {
     let model = MarketsModel(provider: PreviewProvider())
-    MarketRegionView(region: MarketRegion.all[1], model: model)
-        .task { await model.refresh() }
+    NavigationStack {
+        MarketRegionView(region: MarketRegion.all[1], model: model)
+    }
+    .task { await model.refresh() }
 }
