@@ -15,8 +15,7 @@ struct IndexOverviewView: View {
         let state = model.state(for: timespan)
 
         VStack(alignment: .leading, spacing: 40) {
-            IndexHeader(displayName: model.displayName, timespan: timespan, state: state)
-
+            // First focusable element, so focus lands here when the screen opens.
             Picker("Timespan", selection: $timespan) {
                 ForEach(ChartTimespan.allCases) { timespan in
                     Text(timespan.title).tag(timespan)
@@ -26,7 +25,9 @@ struct IndexOverviewView: View {
             .labelsHidden()
             .frame(maxWidth: 1200)
 
-            // The picker stays in place while a timespan loads, so focus is never lost.
+            IndexHeader(displayName: model.displayName, timespan: timespan, state: state)
+
+            // Only this area changes while a timespan loads; the picker stays put, so focus is never lost.
             Group {
                 switch state {
                 case .loading:
