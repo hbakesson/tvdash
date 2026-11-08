@@ -14,6 +14,9 @@ med ett snitt per region. En region visas per skärm.
   `interval=1d` och `period1` = 10 år + 14 dagar bakåt. Daglig data gör att startkursen hamnar på rätt dag.
 - **Avkastning:** prisutveckling utan utdelningar: `senaste / stängning N år sedan − 1`. Startkursen är sista
   stängningen **på eller före** samma kalenderdatum N år före senaste notering.
+- **Kortare perioder:** 1, 3 och 6 månader räknas på samma sätt (sista stängning på eller före samma datum
+  N månader tidigare). *I år* utgår från föregående års sista stängning. Allt räknas ur samma dagliga data,
+  utan extra anrop.
 - **Per år, 10 år:** `(1 + avkastning10)^(1/10) − 1`.
 - **Snitt:** aritmetiskt medelvärde per kolumn av de index som har data. Visas bara för regioner med fler än
   ett index. Per år-snittet är medel av radernas årstakt, inte årstakten av snittet.

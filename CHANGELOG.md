@@ -18,6 +18,7 @@ Formatet följer [Keep a Changelog](https://keepachangelog.com/sv/1.1.0/) och pr
 - Välj tidsperiod för indexdiagrammet: 1 mån, 3 mån, 6 mån, i år, 1 år, 5 år, 10 år eller max. Senast valda
   period sparas och gäller alla index.
 - Varje index på regionskärmarna går att välja och öppnar ett eget diagram med tidsperioder.
+- Regionskärmarna visar även utveckling för 1 mån, 3 mån, 6 mån och i år, till vänster om års-kolumnerna.
 - App-ikon i fyra lager (parallax) med ordet "index" över en stigande graf, samt Top Shelf-bilder.
   Genereras av `scripts/generate-icons.swift`.
 

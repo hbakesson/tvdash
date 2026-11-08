@@ -1,13 +1,15 @@
 import SwiftUI
 
-/// One region per screen: a table of indexes with 1, 3, 5 and 10-year returns.
+/// One region per screen: a table of indexes with returns from 1 month to 10 years.
 ///
 /// Selecting a row pushes a `MarketIndex` onto the enclosing `NavigationStack`.
 struct MarketRegionView: View {
     let region: MarketRegion
     let model: MarketsModel
 
-    private let valueColumnWidth: CGFloat = 225
+    /// Nine value columns must fit next to the index names within the 1760 pt safe-area width.
+    private let valueColumnWidth: CGFloat = 150
+    private let columnSpacing: CGFloat = 12
 
     var body: some View {
         if model.allFailed {
@@ -19,7 +21,7 @@ struct MarketRegionView: View {
                 Spacer(minLength: 0)
                 footer
             }
-            .padding(.horizontal, 80)
+            // No horizontal padding: the tab view already insets content to the 80 pt safe area.
             .padding(.vertical, 40)
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
@@ -37,15 +39,18 @@ struct MarketRegionView: View {
 
     private var table: some View {
         VStack(spacing: 16) {
-            HStack(spacing: 20) {
+            HStack(alignment: .bottom, spacing: columnSpacing) {
                 Text("Index")
                     .frame(maxWidth: .infinity, alignment: .leading)
                 ForEach(ReturnPeriod.allCases, id: \.self) { period in
                     Text(period.title)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.trailing)
+                        .fixedSize(horizontal: false, vertical: true)
                         .frame(width: valueColumnWidth, alignment: .trailing)
                 }
             }
-            .font(.headline)
+            .font(.callout)
             .foregroundStyle(.secondary)
             .padding(.horizontal, RowButtonStyle.horizontalPadding)
 
@@ -54,10 +59,10 @@ struct MarketRegionView: View {
             // Each row opens the index's chart, where the timespan can be chosen.
             ForEach(region.indexes) { index in
                 NavigationLink(value: index) {
-                    HStack(spacing: 20) {
+                    HStack(spacing: columnSpacing) {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(verbatim: index.name)
-                                .font(.title3.bold())
+                                .font(.headline)
                             Text(subtitle(for: index))
                                 .font(.callout)
                                 .foregroundStyle(.secondary)
@@ -75,9 +80,9 @@ struct MarketRegionView: View {
 
             if let average = model.average(for: region) {
                 Divider()
-                HStack(spacing: 20) {
+                HStack(spacing: columnSpacing) {
                     Text("Average")
-                        .font(.title3.bold())
+                        .font(.headline)
                         .frame(maxWidth: .infinity, alignment: .leading)
                     ReturnCells(state: .loaded(average), columnWidth: valueColumnWidth)
                 }
@@ -107,7 +112,7 @@ struct MarketRegionView: View {
 
 /// A table row that lifts and highlights when focused.
 private struct RowButtonStyle: ButtonStyle {
-    static let horizontalPadding: CGFloat = 24
+    static let horizontalPadding: CGFloat = 16
 
     func makeBody(configuration: Configuration) -> some View {
         Row(configuration: configuration)
@@ -133,7 +138,7 @@ private struct RowButtonStyle: ButtonStyle {
     }
 }
 
-/// The five value cells of one table row.
+/// The value cells of one table row, one per `ReturnPeriod`.
 private struct ReturnCells: View {
     let state: MarketsModel.RowState
     let columnWidth: CGFloat
@@ -141,7 +146,7 @@ private struct ReturnCells: View {
     var body: some View {
         ForEach(ReturnPeriod.allCases, id: \.self) { period in
             cell(for: period)
-                .font(.title3.weight(.semibold))
+                .font(.callout.weight(.semibold))
                 .monospacedDigit()
                 .lineLimit(1)
                 .minimumScaleFactor(0.8)

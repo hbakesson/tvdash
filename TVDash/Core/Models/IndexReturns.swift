@@ -2,20 +2,29 @@ import Foundation
 
 /// A column in the returns table.
 nonisolated enum ReturnPeriod: CaseIterable, Hashable, Sendable {
+    case oneMonth, threeMonths, sixMonths, yearToDate
     case oneYear, threeYears, fiveYears, tenYears, annualizedTenYears
 
-    /// Years to look back when computing the total return.
-    var years: Int {
+    /// How far back from the latest value the start price is taken, or `nil` for periods with their own rule.
+    var lookback: (component: Calendar.Component, value: Int)? {
         switch self {
-        case .oneYear: 1
-        case .threeYears: 3
-        case .fiveYears: 5
-        case .tenYears, .annualizedTenYears: 10
+        case .oneMonth: (.month, 1)
+        case .threeMonths: (.month, 3)
+        case .sixMonths: (.month, 6)
+        case .oneYear: (.year, 1)
+        case .threeYears: (.year, 3)
+        case .fiveYears: (.year, 5)
+        case .tenYears: (.year, 10)
+        case .yearToDate, .annualizedTenYears: nil
         }
     }
 
     var title: LocalizedStringResource {
         switch self {
+        case .oneMonth: "1M"
+        case .threeMonths: "3M"
+        case .sixMonths: "6M"
+        case .yearToDate: "YTD"
         case .oneYear: "1 yr"
         case .threeYears: "3 yrs"
         case .fiveYears: "5 yrs"
@@ -42,18 +51,32 @@ nonisolated struct IndexReturns: Equatable, Sendable {
 
     /// Computes returns from daily history, measured back from the latest value.
     ///
-    /// The start price for "N years" is the last close on or before the same calendar date N years earlier.
+    /// The start price for "N months/years" is the last close on or before the same calendar date that long
+    /// before. For year-to-date it is the last close of the previous year.
     init(history: IndexHistory, calendar: Calendar = .current) {
         var values: [ReturnPeriod: Double] = [:]
         let end = history.updatedAt
 
-        for period in ReturnPeriod.allCases where period != .annualizedTenYears {
+        /// Last positive close before `date` (or on it, if `inclusive`).
+        func lastClose(before date: Date, inclusive: Bool) -> Double? {
+            let point = history.points.last { inclusive ? $0.date <= date : $0.date < date }
+            guard let close = point?.close, close > 0 else { return nil }
+            return close
+        }
+
+        for period in ReturnPeriod.allCases {
             guard
-                let target = calendar.date(byAdding: .year, value: -period.years, to: end),
-                let start = history.points.last(where: { $0.date <= target })?.close,
-                start > 0
+                let lookback = period.lookback,
+                let target = calendar.date(byAdding: lookback.component, value: -lookback.value, to: end),
+                let start = lastClose(before: target, inclusive: true)
             else { continue }
             values[period] = history.latest / start - 1
+        }
+
+        if let startOfYear = calendar.dateInterval(of: .year, for: end)?.start,
+            let start = lastClose(before: startOfYear, inclusive: false)
+        {
+            values[.yearToDate] = history.latest / start - 1
         }
 
         if let tenYears = values[.tenYears] {

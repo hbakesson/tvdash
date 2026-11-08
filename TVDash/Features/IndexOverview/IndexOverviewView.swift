@@ -40,7 +40,7 @@ struct IndexOverviewView: View {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .padding(.horizontal, 80)
+        // No horizontal padding: the tab view already insets content to the 80 pt safe area.
         .padding(.vertical, 60)
         .task(id: timespan) { await model.refreshPeriodically(timespan) }
     }

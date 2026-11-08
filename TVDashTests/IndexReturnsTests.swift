@@ -29,6 +29,36 @@ struct IndexReturnsTests {
         #expect(isClose(returns[.annualizedTenYears], pow(4.0, 0.1) - 1))
     }
 
+    @Test func computesShortTermReturns() {
+        let history = makeHistory(
+            latest: 120,
+            end: end,
+            closes: [
+                (date(2025, 12, 30), 80),  // last close of the previous year
+                (date(2026, 1, 2), 999),  // first close of this year – not the YTD baseline
+                (date(2026, 5, 6), 90),
+                (date(2026, 8, 5), 96),  // last close on or before 2026-08-06
+                (date(2026, 10, 6), 100),
+            ]
+        )
+
+        let returns = IndexReturns(history: history, calendar: utcCalendar)
+
+        #expect(isClose(returns[.oneMonth], 0.2))
+        #expect(isClose(returns[.threeMonths], 120.0 / 96 - 1))
+        #expect(isClose(returns[.sixMonths], 120.0 / 90 - 1))
+        #expect(isClose(returns[.yearToDate], 0.5))
+    }
+
+    @Test func noYearToDateWithoutCloseFromPreviousYear() {
+        let history = makeHistory(latest: 110, end: end, closes: [(date(2026, 1, 2), 100)])
+
+        let returns = IndexReturns(history: history, calendar: utcCalendar)
+
+        #expect(returns[.yearToDate] == nil)
+        #expect(returns[.oneMonth] != nil)
+    }
+
     @Test func missingWhenHistoryIsTooShort() {
         let history = makeHistory(latest: 110, end: end, closes: [(date(2024, 1, 2), 100)])
 
