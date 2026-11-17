@@ -1,6 +1,6 @@
 # 0002. Indexdata från Yahoo Finance
 
-- **Status:** Accepterad
+- **Status:** Ersatt av 0004
 - **Datum:** 2026-11-07
 
 ## Sammanhang

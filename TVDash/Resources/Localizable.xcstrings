@@ -1,412 +1,1106 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "1 yr" : {
+    "" : {
+
+    },
+    "%@ available of %@" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1 år"
+            "value" : "%1$@ tillgängligt av %2$@"
           }
         }
       }
     },
-    "10 yrs" : {
+    "%@ used of %@" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "10 år"
+            "value" : "%1$@ använt av %2$@"
           }
         }
       }
     },
-    "10Y" : {
+    "%@ version" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "10 år"
+            "value" : "%@-version"
           }
         }
       }
     },
-    "1M" : {
+    "%lld cores" : {
       "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld core"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld cores"
+                }
+              }
+            }
+          }
+        },
         "sv" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 mån"
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld kärna"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld kärnor"
+                }
+              }
+            }
           }
         }
       }
     },
-    "1Y" : {
+    "Active" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "1 år"
+            "value" : "Aktivt"
           }
         }
       }
     },
-    "3 yrs" : {
+    "Addresses" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3 år"
+            "value" : "Adresser"
           }
         }
       }
     },
-    "3M" : {
+    "all cores" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3 mån"
+            "value" : "alla kärnor"
           }
         }
       }
     },
-    "5 yrs" : {
+    "App" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5 år"
+            "value" : "Appen"
           }
         }
       }
     },
-    "5Y" : {
+    "App started" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "5 år"
+            "value" : "Appen startad"
           }
         }
       }
     },
-    "6M" : {
+    "Application Support" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "6 mån"
+            "value" : "Programdata"
           }
         }
       }
     },
-    "All" : {
+    "Available" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Max"
+            "value" : "Tillgängligt"
           }
         }
       }
     },
-    "All available history" : {
+    "Breakdown" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "All tillgänglig historik"
+            "value" : "Fördelning"
           }
         }
       }
     },
-    "Asia & Emerging Markets" : {
+    "Build" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Asien och tillväxt"
+            "value" : "Build"
           }
         }
       }
     },
-    "Average" : {
+    "Caches" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Snitt"
+            "value" : "Cache"
           }
         }
       }
     },
-    "Check your internet connection and try again." : {
+    "Compressed" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kontrollera internetanslutningen och försök igen."
+            "value" : "Komprimerat"
           }
         }
       }
     },
-    "Close" : {
+    "Connected" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Stängning"
+            "value" : "Ansluten"
           }
         }
       }
     },
-    "Couldn't load index data" : {
+    "Connection" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kunde inte hämta indexdata"
+            "value" : "Anslutning"
           }
         }
       }
     },
-    "Date" : {
+    "Core %lld" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Datum"
+            "value" : "Kärna %lld"
           }
         }
       }
     },
-    "Europe" : {
+    "Cores" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Europa"
+            "value" : "Kärnor"
           }
         }
       }
     },
-    "Global" : {
+    "CPU cores" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Globalt"
+            "value" : "CPU-kärnor"
           }
         }
       }
     },
-    "Index" : {
+    "CPU load" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Index"
+            "value" : "CPU-belastning"
           }
         }
       }
     },
-    "Loading…" : {
+    "Critical" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Laddar…"
+            "value" : "Kritisk"
           }
         }
       }
     },
-    "Nordics" : {
+    "Darwin kernel" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Norden"
+            "value" : "Darwin-kärna"
           }
         }
       }
     },
-    "North America" : {
+    "Device" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nordamerika"
+            "value" : "Enhet"
           }
         }
       }
     },
-    "Past 10 years" : {
+    "Disk" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Senaste 10 åren"
+            "value" : "Disk"
           }
         }
       }
     },
-    "Past 3 months" : {
+    "DNS" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Senaste 3 månaderna"
+            "value" : "DNS"
           }
         }
       }
     },
-    "Past 5 years" : {
+    "Documents" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Senaste 5 åren"
+            "value" : "Dokument"
           }
         }
       }
     },
-    "Past 6 months" : {
+    "Download" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Senaste 6 månaderna"
+            "value" : "Nedladdning"
           }
         }
       }
     },
-    "Past month" : {
+    "Ethernet" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Senaste månaden"
+            "value" : "Ethernet"
           }
         }
       }
     },
-    "Past year" : {
+    "Footprint" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Senaste året"
+            "value" : "Minnesavtryck"
           }
         }
       }
     },
-    "Per year, 10 yrs" : {
+    "free" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Per år, 10 år"
+            "value" : "ledigt"
           }
         }
       }
     },
-    "Price return, excluding dividends" : {
+    "Free" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Prisutveckling, exklusive utdelningar"
+            "value" : "Ledigt"
           }
         }
       }
     },
-    "Since %@" : {
+    "free of %@" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sedan %@"
+            "value" : "ledigt av %@"
           }
         }
       }
     },
-    "Since start of year" : {
+    "High" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sedan årsskiftet"
+            "value" : "Hög"
           }
         }
       }
     },
-    "Start of period" : {
+    "Identifier" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Periodens början"
+            "value" : "Identifierare"
           }
         }
       }
     },
-    "Timespan" : {
+    "in use of %@" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tidsperiod"
+            "value" : "används av %@"
           }
         }
       }
     },
-    "Try Again" : {
+    "Inactive" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Försök igen"
+            "value" : "Inaktivt"
           }
         }
       }
     },
-    "Updated %@" : {
+    "IPv4" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Uppdaterad %@"
+            "value" : "IPv4"
           }
         }
       }
     },
-    "YTD" : {
+    "IPv6" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "I år"
+            "value" : "IPv6"
           }
         }
       }
     },
-    "^[%lld index](inflect: true)" : {
+    "Language" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "%lld index"
+            "value" : "Språk"
           }
         }
       }
     },
-    "via %@" : {
+    "Last 2 minutes" : {
       "localizations" : {
         "sv" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "via %@"
+            "value" : "Senaste 2 minuterna"
+          }
+        }
+      }
+    },
+    "Last restart" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Senaste omstart"
+          }
+        }
+      }
+    },
+    "Latency" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Svarstid"
+          }
+        }
+      }
+    },
+    "Limit" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gräns"
+          }
+        }
+      }
+    },
+    "Load" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Belastning"
+          }
+        }
+      }
+    },
+    "Low Data Mode" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Datasparläge"
+          }
+        }
+      }
+    },
+    "May still allocate" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kan allokera till"
+          }
+        }
+      }
+    },
+    "Measured %@" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mätt %@"
+          }
+        }
+      }
+    },
+    "Measures against speed.cloudflare.com" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mäter mot speed.cloudflare.com"
+          }
+        }
+      }
+    },
+    "Measuring download…" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mäter nedladdning…"
+          }
+        }
+      }
+    },
+    "Measuring latency…" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mäter svarstid…"
+          }
+        }
+      }
+    },
+    "Measuring upload…" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mäter uppladdning…"
+          }
+        }
+      }
+    },
+    "Memory" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minne"
+          }
+        }
+      }
+    },
+    "Model" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modell"
+          }
+        }
+      }
+    },
+    "Name" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Namn"
+          }
+        }
+      }
+    },
+    "Network" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nätverk"
+          }
+        }
+      }
+    },
+    "No" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nej"
+          }
+        }
+      }
+    },
+    "No IP address" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ingen IP-adress"
+          }
+        }
+      }
+    },
+    "Normal" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Normal"
+          }
+        }
+      }
+    },
+    "Not connected" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inte ansluten"
+          }
+        }
+      }
+    },
+    "Other" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annat"
+          }
+        }
+      }
+    },
+    "Other apps" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Andra appar"
+          }
+        }
+      }
+    },
+    "Overview" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Översikt"
+          }
+        }
+      }
+    },
+    "Processes" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processer"
+          }
+        }
+      }
+    },
+    "Processor" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Processor"
+          }
+        }
+      }
+    },
+    "RAM" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RAM"
+          }
+        }
+      }
+    },
+    "RAM in use" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "RAM används"
+          }
+        }
+      }
+    },
+    "Received since restart" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mottaget sedan omstart"
+          }
+        }
+      }
+    },
+    "Region" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Region"
+          }
+        }
+      }
+    },
+    "Restarted %@" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Omstartad %@"
+          }
+        }
+      }
+    },
+    "Router" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Router"
+          }
+        }
+      }
+    },
+    "Runs in" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Körs i"
+          }
+        }
+      }
+    },
+    "Sent since restart" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skickat sedan omstart"
+          }
+        }
+      }
+    },
+    "Simulator" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simulator"
+          }
+        }
+      }
+    },
+    "since restart" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sedan omstart"
+          }
+        }
+      }
+    },
+    "Slightly elevated" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Något förhöjd"
+          }
+        }
+      }
+    },
+    "Software" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Programvara"
+          }
+        }
+      }
+    },
+    "Speed test" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hastighetstest"
+          }
+        }
+      }
+    },
+    "Status" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status"
+          }
+        }
+      }
+    },
+    "Storage" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lagring"
+          }
+        }
+      }
+    },
+    "System" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "System"
+          }
+        }
+      }
+    },
+    "Temperature" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temperatur"
+          }
+        }
+      }
+    },
+    "Temporary files" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Temporära filer"
+          }
+        }
+      }
+    },
+    "Test Again" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Testa igen"
+          }
+        }
+      }
+    },
+    "Test Speed" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Testa hastighet"
+          }
+        }
+      }
+    },
+    "The test failed. Check the connection." : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Testet misslyckades. Kontrollera anslutningen."
+          }
+        }
+      }
+    },
+    "This app" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Den här appen"
+          }
+        }
+      }
+    },
+    "This app (PID %d)" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Den här appen (PID %d)"
+          }
+        }
+      }
+    },
+    "Threads" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trådar"
+          }
+        }
+      }
+    },
+    "Time" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tid"
+          }
+        }
+      }
+    },
+    "Time zone" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidszon"
+          }
+        }
+      }
+    },
+    "Total" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Totalt"
+          }
+        }
+      }
+    },
+    "Traffic now" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Trafik just nu"
+          }
+        }
+      }
+    },
+    "tvOS does not let apps see which other apps are installed or how much space they use. You can find that in Settings → General → Manage Storage." : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tvOS låter inte appar se vilka andra appar som är installerade eller hur mycket plats de tar. Det hittar du i Inställningar → Allmänt → Hantera lagring."
+          }
+        }
+      }
+    },
+    "tvOS only lets an app see its own process, so a list of the top processes isn't available." : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tvOS låter bara en app se sin egen process, så en topplista över processer är inte tillgänglig."
+          }
+        }
+      }
+    },
+    "Type" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Okänt"
+          }
+        }
+      }
+    },
+    "Upload" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uppladdning"
+          }
+        }
+      }
+    },
+    "Uptime" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Drifttid"
+          }
+        }
+      }
+    },
+    "used" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "använt"
+          }
+        }
+      }
+    },
+    "Used" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Använt"
+          }
+        }
+      }
+    },
+    "User" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Användare"
+          }
+        }
+      }
+    },
+    "Value" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Värde"
+          }
+        }
+      }
+    },
+    "Waiting for connection" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Väntar på anslutning"
+          }
+        }
+      }
+    },
+    "Wi-Fi" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wi-Fi"
+          }
+        }
+      }
+    },
+    "Wired" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Låst"
+          }
+        }
+      }
+    },
+    "Yes" : {
+      "localizations" : {
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja"
           }
         }
       }

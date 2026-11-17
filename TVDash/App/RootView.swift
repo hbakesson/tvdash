@@ -1,55 +1,47 @@
 import SwiftUI
 
-/// Top-level navigation: one tab for the OMXS30 chart, then one tab per market region.
+/// Top-level navigation: an overview tab followed by one tab per category.
 ///
-/// Each region tab has its own navigation stack; selecting an index there opens its chart.
-/// Menu/Back on the Siri Remote returns to the table.
-///
-/// Swipe left/right on the Siri Remote while the tab bar is focused to change screen.
-/// The selected tab is remembered, so the app reopens where you left it.
+/// Swipe left/right on the Siri Remote while the tab bar is focused to change category. The selected tab is
+/// remembered, so the app reopens where you left it. Measurements run while this view is on screen.
 struct RootView: View {
-    let indexOverview: IndexOverviewModel
-    let markets: MarketsModel
+    let dashboard: DashboardModel
+    let speedTest: SpeedTestModel
 
-    /// `"overview"` or a `MarketRegion.ID` raw value. Can be overridden at launch with `-selectedTab <value>`.
-    @AppStorage("selectedTab") private var selectedTab = RootView.overviewTab
-
-    private static let overviewTab = "overview"
+    /// Can be overridden at launch with `-selectedSection <raw value>`.
+    @AppStorage("selectedSection") private var selection = DashboardSection.overview
 
     var body: some View {
-        TabView(selection: $selectedTab) {
-            Tab(value: Self.overviewTab) {
-                IndexOverviewView(model: indexOverview)
-            } label: {
-                Text(verbatim: indexOverview.displayName)
-            }
-
-            ForEach(markets.regions) { region in
-                Tab(value: region.id.rawValue) {
-                    NavigationStack {
-                        MarketRegionView(region: region, model: markets)
-                            .navigationDestination(for: MarketIndex.self) { index in
-                                IndexChartScreen(index: index)
-                            }
-                    }
+        TabView(selection: $selection) {
+            ForEach(DashboardSection.allCases) { section in
+                Tab(value: section) {
+                    screen(for: section)
                 } label: {
-                    Text(region.title)
+                    // Text only: six labels with icons do not fit in the tvOS tab bar.
+                    Text(section.title)
                 }
             }
         }
-        .task { await markets.refreshPeriodically() }
+        // On a plain container rather than the TabView itself: tvOS does not run `.task` attached to a TabView.
+        .background { Color.clear.task { await dashboard.monitor() } }
+    }
+
+    @ViewBuilder
+    private func screen(for section: DashboardSection) -> some View {
+        switch section {
+        case .overview: OverviewView(model: dashboard, selection: $selection)
+        case .memory: MemoryView(model: dashboard)
+        case .storage: StorageView(model: dashboard)
+        case .processor: ProcessorView(model: dashboard)
+        case .network: NetworkView(model: dashboard, speedTest: speedTest)
+        case .system: SystemView(model: dashboard)
+        }
     }
 }
 
-/// Owns the chart model for an index opened from a region screen, for as long as the screen is shown.
-private struct IndexChartScreen: View {
-    @State private var model: IndexOverviewModel
-
-    init(index: MarketIndex) {
-        _model = State(initialValue: IndexOverviewModel(symbol: index.symbol, displayName: index.name))
-    }
-
-    var body: some View {
-        IndexOverviewView(model: model)
-    }
+#Preview {
+    RootView(
+        dashboard: DashboardModel(provider: PreviewMetrics(), pathMonitor: PreviewPathMonitor()),
+        speedTest: SpeedTestModel(service: PreviewSpeedTest())
+    )
 }

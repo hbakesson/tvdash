@@ -1,15 +1,19 @@
 # TVDash
 
-En dashboard-app för Apple TV, byggd med SwiftUI.
+**Driftstats** – en dashboard-app för Apple TV, byggd med SwiftUI, som visar Apple TV:ns egna systemdata – kategoriserat i
+flikar:
 
-- **OMXS30:** utveckling sedan årsskiftet med diagram.
-- **Regioner** (en per skärm): Globalt, Nordamerika, Europa, Norden, Asien och tillväxt – 1, 3, 5 och 10 års
-  utveckling per index samt snitt.
+- **Översikt:** en ruta per kategori med nyckeltal och minidiagram. Välj en ruta för att öppna kategorin.
+- **Minne:** använt/tillgängligt RAM, fördelning (låst, aktivt, komprimerat, inaktivt, fritt), historik och appens
+  eget minne.
+- **Lagring:** ledigt och använt diskutrymme samt hur mycket appen själv tar.
+- **Processor:** belastning totalt och per kärna, historik och den egna processen.
+- **Nätverk:** anslutningstyp, router, IP-adresser, trafik just nu och sedan omstart, samt hastighetstest.
+- **System:** modell, tvOS-version och build, Darwin-kärna, drifttid, senaste omstart, temperatur, språk och region.
 
-Bläddra mellan skärmarna med vänster/höger på Siri Remote.
-
-Indexdata hämtas från Yahoo Finance (inofficiellt API, ingen nyckel) – se
-[ADR 0002](docs/adr/0002-index-data-from-yahoo-finance.md).
+Data uppdateras varannan sekund. tvOS låter inte appar lista andra processer eller installerade appar – se
+[ADR 0004](docs/adr/0004-system-metrics-on-tvos.md). Hastighetstestet körs mot Cloudflare, se
+[ADR 0005](docs/adr/0005-speed-test-via-cloudflare.md).
 
 > **Status:** tidig grund (v0.1.0). Se [CHANGELOG.md](CHANGELOG.md).
 

@@ -28,7 +28,7 @@ Vyer enhetstestas inte – håll dem tunna så logiken hamnar i testbara modelle
 
 ## Konventioner
 
-- En `@Suite` per typ som testas: `IndexOverviewModelTests.swift`.
+- En `@Suite` per typ som testas: `DashboardModelTests.swift`.
 - Testnamn beskriver beteende: `failedRefreshKeepsPreviousData()`.
 - Arrange / Act / Assert, separerade med tomrad.
 - `try #require(...)` i stället för force unwrap.

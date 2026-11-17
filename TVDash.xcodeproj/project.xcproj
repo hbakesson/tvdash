@@ -42,7 +42,7 @@
         "DEVELOPMENT_TEAM": "6G962RZ438",
         "ENABLE_PREVIEWS": "YES",
         "GENERATE_INFOPLIST_FILE": "YES",
-        "INFOPLIST_KEY_CFBundleDisplayName": "Index",
+        "INFOPLIST_KEY_CFBundleDisplayName": "Driftstats",
         "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
         "INFOPLIST_KEY_UIUserInterfaceStyle": "Automatic",
         "LD_RUNPATH_SEARCH_PATHS": "@executable_path/Frameworks",
@@ -95,6 +95,7 @@
   "build-settings": {
     "ALWAYS_SEARCH_USER_PATHS": "NO",
     "ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS": "YES",
+    "CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED": "YES",
     "CLANG_ANALYZER_NONNULL": "YES",
     "CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION": "YES_AGGRESSIVE",
     "CLANG_CXX_LANGUAGE_STANDARD": "gnu++20",
@@ -158,6 +159,6 @@
     "TVOS_DEPLOYMENT_TARGET": "26.0",
     "VALIDATE_PRODUCT[config=Release]": "YES",
   },
-  "last-upgrade": "27.0",
+  "last-upgrade": "27.2",
   "last-swift-update": "27.0",
 }

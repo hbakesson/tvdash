@@ -11,7 +11,7 @@ Formatering sköts av `swift-format` (konfig i `.swift-format`) – diskutera in
 
 ## Namngivning och filer
 
-- En huvudtyp per fil; filnamnet = typnamnet (`IndexOverviewModel.swift`).
+- En huvudtyp per fil; filnamnet = typnamnet (`DashboardModel.swift`).
 - Vyer slutar på `View`, skärmmodeller på `Model`, tjänster på `Service`, protokoll beskriver förmåga
   (`WeatherProviding`).
 - Booleans läses som påståenden: `isLoading`, `hasError`.
@@ -26,7 +26,7 @@ Formatering sköts av `swift-format` (konfig i `.swift-format`) – diskutera in
 
 ```swift
 import OSLog
-private let logger = Logger(subsystem: "com.hbakesson.tvdash", category: "IndexOverview")
+private let logger = Logger(subsystem: "com.hbakesson.tvdash", category: "Dashboard")
 ```
 
 ## SwiftUI

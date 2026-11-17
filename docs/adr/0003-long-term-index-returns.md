@@ -1,6 +1,6 @@
 # 0003. Långsiktig avkastning per region
 
-- **Status:** Accepterad
+- **Status:** Ersatt av 0004
 - **Datum:** 2026-11-07
 
 ## Sammanhang
