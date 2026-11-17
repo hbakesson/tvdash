@@ -38,6 +38,18 @@ Välj schemat **TVDash** och destinationen **Apple TV 4K (4th generation)**, try
 Navigera i simulatorn med piltangenterna, `Enter` = välj, `Esc` = Menu/tillbaka.
 Visa Siri Remote-fönstret via *I/O → Show Apple TV Remote* (`⇧⌘R`).
 
+## Installera på Apple TV
+
+Para Apple TV:n med Xcode en gång (*Window → Devices and Simulators*). Sedan räcker:
+
+```sh
+scripts/deploy-appletv.sh            # enheten som heter "AppleTV"
+scripts/deploy-appletv.sh <namn|UDID>
+```
+
+Skriptet bygger Release, installerar och startar appen utan debugger. Kör du från Xcode i stället kan du slå av
+debuggern under *Product → Scheme → Edit Scheme… → Run → Info → Debug executable*.
+
 ## Vanliga kommandon
 
 ```sh
